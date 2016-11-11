@@ -8,7 +8,7 @@ identity_matrix = lambda n: [[1 if j == i else 0 for j in range(n)] for i in ran
 
 
 def calculate_det(matrix):
-    if not np.linalg.det(matrix):
+    if not int(np.linalg.det(matrix)):
         return False
     return True
 
