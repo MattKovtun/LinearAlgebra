@@ -1,16 +1,10 @@
-from factorization import LU_factorization, inversion
+from factorization import LU_factorization, inversion, calculate_det
 from flask import Flask
 from flask import render_template
 from flask import request
 import numpy as np
 
 app = Flask(__name__)
-
-
-def calculate_det(matrix):
-    if not np.linalg.det(matrix):
-        return False
-    return True
 
 
 def validate_format(s):
@@ -28,10 +22,11 @@ def validate_format(s):
 
 
 def get_triangles_and_inversion(matrix):
-    L, U = LU_factorization(matrix)
+    L, U, P = LU_factorization(matrix)
     Linv = inversion(L)
     Uinv = inversion(U)
-    A = np.dot(Uinv, Linv)
+    matrix = np.dot(Uinv, Linv)
+    A = np.dot(matrix, P)
     L = postformat(L)
     U = postformat(U)
     A = postformat(A)
