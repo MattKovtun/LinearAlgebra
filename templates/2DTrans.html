@@ -1,5 +1,5 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>Linear algebra project</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -11,47 +11,30 @@
              tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
          });
 
+
     </script>
     <script type="text/javascript" async
             src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 </head>
 <body>
+{##}
+{#<label class="btn btn-default btn-file">#}
+{#    Browse <input type="file" style="display: none;" name="img">#}
+{#</label>#}
 <div class="container">
     <div class="title">
-        <h1 class="text-center">LU-factorization and Inverse </h1>
+        <h1>Upload new File</h1>
     </div>
-    <form method="post" action="/">
-        <br>
-        <h2>Please enter matrix:</h2>
-        <textarea name="matrix" rows="5" class="form-control">{% if new_matrix is defined %}
-            {{ matrix }}{% endif %}</textarea><br/>
-        <input class="btn btn-success" type="submit"/>
+    <form action="" method=post enctype=multipart/form-data>
+        <p><input type=file name=file>
+            <input type=submit value=Upload>
     </form>
-
-{% if lower_triangle is defined %}
-    <h4>Lower triangle: {{ lower_triangle }}</h4>
-{% endif %}
-{% if upper_triangle is defined %}
-    <h4>Upper triangle: {{ upper_triangle }}</h4>
-{% endif %}
-{% if inverted is defined %}
-    <h4>Inverted matrix: {{ inverted }}</h4>
-{% endif %}
-{% if invalid is defined %}
-    <h3>{{ invalid }}</h3>
-{% endif %}
-
-
+    <div class="top-right">
+        <img src= {{ url_for('static', filename = 'giphy.gif') }}>
+    </div>
 </div>
-<br>
-<br>
-
-
-
-<!--
--->
-
+</body>
 
 <footer class="footer">
     <div class="container">
@@ -77,5 +60,4 @@
         </address>
     </div>
 </footer>
-</body>
 </html>

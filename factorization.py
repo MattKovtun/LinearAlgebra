@@ -12,6 +12,52 @@ def calculate_det(matrix):
         return False
     return True
 
+
+def validate_format(s):
+    matrix = []
+    lines = s.split('\n')
+    for l in lines:
+        try:
+            matrix.append([int(i) for i in l.split()])
+        except ValueError:
+            return False
+    for i in range(len(matrix)):
+        if not (len(matrix[i]) == len(matrix)):
+            return False
+    return matrix
+
+def get_triangles_and_inversion(matrix):
+    L, U, P = LU_factorization(matrix)
+    Linv = inversion(L)
+    Uinv = inversion(U)
+    matrix = np.dot(Uinv, Linv)
+    A = np.dot(matrix, P)
+    L = postformat(L)
+    U = postformat(U)
+    A = postformat(A)
+    return L, U, A
+
+
+
+def postformat(matrix):
+    m = len(matrix)
+    n = len(matrix[0])
+    new_matrix = '$\\left(\\begin{matrix}\n'
+    for i in range(n):
+        line = ''
+        for j in range(m):
+            line += str(matrix[i][j])
+            if j != m - 1:
+                line += '&'
+            else:
+                line += '\\\\\n'
+        new_matrix += line
+
+    new_matrix += '\\end{matrix}\\right)$\n'
+
+    return new_matrix
+
+
 def LU_factorization(matrix):
     dim = len(matrix)
     matrixc = copy.deepcopy(matrix)
