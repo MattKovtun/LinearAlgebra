@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
 
 
 </head>
@@ -11,9 +11,18 @@
 <div class="container">
 <h1>Transformed picture</h1>
     {% if path is defined %}
-    <img src= {{ url_for('static', filename = 'uploads/r' + path) }}>
+    <img  width="600" height="600" src= {{ url_for('static', filename = 'uploads/' + path) }} >
     {% endif %}
-
+    <form method="post">
+        <h3>Choose number of degrees to rotate</h3>
+         <input type="number" name=dgr min="1" max="360" class="" >
+        <input type="submit" name="my-form" value="Set">
+    </form>
+    <form method="post">
+        <h3>Choose scale</h3>
+        <input type="number" name=scale min="1" max="4" class="">
+        <input type="submit" name="my-form" value="Scale">
+    </form>
 
 </div>
 

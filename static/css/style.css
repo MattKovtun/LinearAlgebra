@@ -39,3 +39,7 @@ span.name::first-letter {
     cursor: inherit;
     display: block;
 }
+
+#mainBody {
+        padding-top: 70px;
+}

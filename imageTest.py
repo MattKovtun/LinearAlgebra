@@ -6,6 +6,7 @@
 # print("Color of 2nd pixel in rgb:" + str(f[0][1]))
 # print("Color of 3d pixel in rgb:" + str(f[0][2]))
 # print(f)
+import os
 
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
@@ -33,13 +34,15 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 
-def rotate_and_save(path, file_name):
+def rotate_and_save(path, file_name, dgr):
     img_data = mpimg.imread(path + file_name)
-    new_data = scipy.ndimage.interpolation.rotate(img_data, 75)
+    new_data = scipy.ndimage.interpolation.rotate(img_data, dgr)
     plt.imshow(new_data)
-    plt.imsave("/home/matt/PycharmProjects/LinearAlgebra/static/uploads/r" + file_name, new_data)
-    # plt.savefig("/home/matt/PycharmProjects/LinearAlgebra/static/uploads/r" + file_name)
-
+    name = str(len(os.listdir('/home/matt/PycharmProjects/LinearAlgebra/static/uploads')) + 1) + "." + \
+               file_name.rsplit('.', 1)[1]
+  #  print(name)
+    plt.imsave("/home/matt/PycharmProjects/LinearAlgebra/static/uploads/r" + name, new_data)
+    return "r" + name
 
 def reflect_y(path, filename):
     file_data = mpimg.imread(path + filename)
@@ -53,4 +56,7 @@ def scale(path, filename, scale_number):
     file_data = mpimg.imread(path + filename)
     new_data = scipy.misc.imresize(file_data, scale_number)
     plt.imshow(new_data)
-    plt.imsave("/home/matt/PycharmProjects/LinearAlgebra/static/uploads/r" + filename, new_data)
+    name = str(len(os.listdir('/home/matt/PycharmProjects/LinearAlgebra/static/uploads')) + 1) + "." + \
+               filename.rsplit('.', 1)[1]
+    plt.imsave("/home/matt/PycharmProjects/LinearAlgebra/static/uploads/r" + name, new_data)
+    return "r" + name
