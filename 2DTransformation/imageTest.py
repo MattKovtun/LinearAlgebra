@@ -10,6 +10,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import scipy.ndimage.interpolation
+import scipy.ndimage
 
 
 
@@ -28,6 +29,12 @@ import scipy.ndimage.interpolation
 
 def rotate_and_save(img_data):
     img_data = mpimg.imread(img_data)
+
     new_data = scipy.ndimage.interpolation.rotate(img_data, 15)
-    #print(img_data)
-    plt.savefig("/home/matt/PycharmProjects/LinearAlgebra/static/uploads/r" + img_data)
+    #new_data = scipy.ndimage.shift(img_data, 2)
+    plt.imshow(new_data)
+    plt._show()
+    #plt.imsave('rr123.png', new_data)
+    #plt.savefig('r123.png')
+
+rotate_and_save('face.png')
