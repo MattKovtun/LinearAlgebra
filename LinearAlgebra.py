@@ -45,8 +45,6 @@ def uploaded_file(filename):
     return render_template('2Dresault.html', path=filename)
 
 
-
-
 @app.route('/LU', methods=["GET", "POST"])
 def factorize():
     if request.method == "POST":

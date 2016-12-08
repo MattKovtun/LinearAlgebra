@@ -43,3 +43,7 @@ span.name::first-letter {
 #mainBody {
         padding-top: 70px;
 }
+
+#mainPageButton  {
+        padding-top: 13px;
+}
