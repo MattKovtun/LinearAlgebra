@@ -137,18 +137,25 @@ if __name__ == "__main__":
     matrixx = [[3, -7, -2, 2], [-3, 5, 1, 0], [6, -4, 0, -5], [-9, 5, -5, 12]]
     matrix1 = [[1, 2, 3, 4], [2, 5, 8, 7], [3, 8, 15, 14], [4, 7, 14, 27]]
     matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-    L, U = LU_factorization(matrix)
-    print("________________________")
-    print_matrix(matrix)
-    print("________________________")
-    print_matrix(L)
-    print("________________________")
-    print_matrix(U)
-    print("________________________")
-    print("Multipl")
-    print_matrix(np.dot(L, U))
-    print("________________________")
-    print("Inversion with LU")
-    print_matrix(inv_with_LU(matrix))
-    print("________________________")
-    print_matrix(inversion(matrix))
+    def matrix_generator():
+        import random
+        n = random.randint(1, 30)
+        matrix = [[] for i in range(n)]
+        for i in range(n):
+            for j in range(n):
+                matrix[i].append(random.randint(1, 100))
+        print(matrix)
+        if calculate_det(matrix):
+            try:
+                L, U, A = LU_factorization(matrix)
+                print(L)
+                print("-----------------------------------------------------------------")
+                print(U)
+                print("-----------------------------------------------------------------")
+                print(A)
+            except:
+                print("ERROR OCCURED")
+                print(matrix)
+
+    for i in range(10):
+        matrix_generator()
